@@ -10,6 +10,15 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    macros {
+        git_pull_origin_dev: git_pull_origin_dev {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp G &kp I &kp T &kp SPACE &kp P &kp U &kp L &kp L &kp SPACE &kp O &kp R &kp I &kp G &kp I &kp N &kp SPACE &kp D &kp E &kp V &kp E &kp L &kp O &kp P>;
+            label = "GIT_PULL_ORIGIN_DEV";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -41,11 +50,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&kp TILDE         &kp EXCLAMATION  &kp AT  &kp HASH          &kp DOLLAR         &kp PERCENT                                           &kp CARET   &kp AMPERSAND  &kp ASTERISK   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
-&kp F1            &kp F2           &kp F3  &kp F4            &kp F5             &kp F6                                                &kp F7      &kp F8         &kp F9         &kp F10               &kp F11                &kp PLUS
-&kp LEFT_SHIFT    &trans           &trans  &ext_power EP_ON  &ext_power EP_OFF  &ext_power EP_TOG                                     &bt BT_CLR  &bt BT_SEL 0   &bt BT_SEL 1   &trans                &kp COLON              &kp PIPE
-&kp LEFT_CONTROL  &trans           &trans  &trans            &trans             &trans             &kp LEFT_BRACE    &kp RIGHT_BRACE  &trans      &trans         &kp LT         &kp GT                &kp QUESTION           &to 0
-                                           &kp ESCAPE        &kp LEFT_ALT       &kp LEFT_COMMAND   &trans            &trans           &to 2       &to 3          &kp BACKSLASH
+&kp TILDE         &kp EXCLAMATION  &kp AT  &kp HASH          &kp DOLLAR         &kp PERCENT                                                 &kp CARET   &kp AMPERSAND  &kp ASTERISK   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
+&kp F1            &kp F2           &kp F3  &kp F4            &kp F5             &kp F6                                                      &kp F7      &kp F8         &kp F9         &kp F10               &kp F11                &kp PLUS
+&kp LEFT_SHIFT    &trans           &trans  &ext_power EP_ON  &ext_power EP_OFF  &ext_power EP_TOG                                           &bt BT_CLR  &bt BT_SEL 0   &bt BT_SEL 1   &trans                &kp COLON              &kp PIPE
+&kp LEFT_CONTROL  &trans           &trans  &trans            &trans             &trans             &kp LEFT_BRACE          &kp RIGHT_BRACE  &trans      &trans         &kp LT         &kp GT                &kp QUESTION           &to 0
+                                           &kp ESCAPE        &kp LEFT_ALT       &kp LEFT_COMMAND   &git_pull_origin_dev    &trans           &to 2       &to 3          &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
