@@ -11,18 +11,67 @@
 
 / {
     macros {
-        git_pull_origin_dev: git_pull_origin_dev {
+        vim_save: vim_save {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp G &kp I &kp T &kp SPACE &kp P &kp U &kp L &kp L &kp SPACE &kp O &kp R &kp I &kp G &kp I &kp N &kp SPACE &kp D &kp E &kp V &kp E &kp L &kp O &kp P>;
-            label = "GIT_PULL_ORIGIN_DEV";
+            bindings = <&kp ESCAPE &kp COLON &kp W &kp ENTER>;
+            label = "VIM_SAVE";
         };
 
-        git_push_no_verify: git_push_no_verify {
+        vim_save_and_close: vim_save_and_close {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H &kp SPACE &kp MINUS &kp MINUS &kp N &kp O &kp MINUS &kp V &kp E &kp R &kp I &kp F &kp Y>;
-            label = "GIT_PUSH_NO_VERIFY";
+            bindings = <&kp ESCAPE &kp COLON &kp X &kp ENTER>;
+            label = "VIM_SAVE_AND_CLOSE";
+        };
+
+        vim_quit: vim_quit {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp ESCAPE &kp COLON &kp Q &kp ENTER>;
+            label = "VIM_QUIT";
+        };
+
+        vim_save_and_exit: vim_save_and_exit {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp ESCAPE &kp COLON &kp W &kp Q &kp ENTER>;
+            label = "VIM_SAVE_AND_EXIT";
+        };
+
+        open_nvim_in_current: open_nvim_in_current {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N &kp V &kp I &kp M &kp SPACE &kp DOT &kp ENTER>;
+            label = "OPEN_NVIM_IN_CURRENT";
+        };
+
+        aws_sso_login: aws_sso_login {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp W &kp S &kp SPACE &kp S &kp S &kp O &kp SPACE &kp L &kp O &kp G &kp I &kp N &kp SPACE &kp MINUS &kp MINUS &kp P &kp R &kp O &kp F &kp I &kp L &kp E &kp SPACE &kp C &kp O &kp S &kp M &kp MINUS &kp N &kp O &kp N &kp P &kp R &kp O &kp D &kp ENTER>;
+            label = "AWS_SSO_LOGIN";
+        };
+
+        open_k9s: open_k9s {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp K &kp N9 &kp S &kp ENTER>;
+            label = "OPEN_K9S";
+        };
+
+        macrocosm_setup: macrocosm_setup {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp M &kp A &kp C &kp R &kp O &kp C &kp O &kp S &kp M &kp SPACE &kp S &kp E &kp T &kp U &kp P &kp SPACE &kp MINUS &kp MINUS &kp D &kp E &kp V &kp SPACE>;
+            label = "MACROCOSM_SETUP";
+        };
+
+        garden_deploy: garden_deploy {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp G &kp A &kp R &kp D &kp E &kp N &kp SPACE &kp D &kp E &kp P &kp L &kp O &kp Y &kp ENTER>;
+            label = "GARDEN_DEPLOY";
         };
     };
 
@@ -38,11 +87,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp GRAVE         &kp N1  &kp N2  &kp N3   &kp N4        &kp N5                                    &kp N6  &kp N7         &kp N8         &kp N9   &kp N0    &kp MINUS
-&kp TAB           &kp Q   &kp W   &kp E    &kp R         &kp T                                     &kp Y   &kp U          &kp I          &kp O    &kp P     &kp BACKSPACE
-&kp LEFT_SHIFT    &kp A   &kp S   &kp D    &kp F         &kp G                                     &kp H   &kp J          &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LEFT_CONTROL  &kp Z   &kp X   &kp C    &kp V         &kp B             &kp LBKT     &kp RBKT   &kp N   &kp M          &kp COMMA      &kp DOT  &kp FSLH  &to 2
-                                  &kp ESC  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE    &kp ENTER  &to 1   &kp BACKSPACE  &kp BACKSLASH
+&kp GRAVE         &kp N1  &kp N2  &kp N3   &kp N4        &kp N5                                    &kp N6            &kp N7         &kp N8         &kp N9   &kp N0    &kp MINUS
+&kp TAB           &kp Q   &kp W   &kp E    &kp R         &kp T                                     &kp Y             &kp U          &kp I          &kp O    &kp P     &kp ENTER
+&kp LEFT_SHIFT    &kp A   &kp S   &kp D    &kp F         &kp G                                     &kp H             &kp J          &kp K          &kp L    &kp SEMI  &kp SQT
+&kp LEFT_CONTROL  &kp Z   &kp X   &kp C    &kp V         &kp B             &tog 1       &tog 2     &kp N             &kp M          &kp COMMA      &kp DOT  &kp FSLH  &kp RIGHT_BRACKET
+                                  &kp ESC  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE    &kp SPACE  &kp LEFT_BRACKET  &kp BACKSPACE  &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -57,11 +106,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&kp TILDE         &kp EXCLAMATION  &kp AT  &kp HASH          &kp DOLLAR         &kp PERCENT                                                     &kp CARET   &kp AMPERSAND  &kp ASTERISK   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
-&kp F1            &kp F2           &kp F3  &kp F4            &kp F5             &kp F6                                                          &kp F7      &kp F8         &kp F9         &kp F10               &kp F11                &kp PLUS
-&kp LEFT_SHIFT    &trans           &trans  &ext_power EP_ON  &ext_power EP_OFF  &ext_power EP_TOG                                               &bt BT_CLR  &bt BT_SEL 0   &bt BT_SEL 1   &trans                &kp COLON              &kp PIPE
-&kp LEFT_CONTROL  &trans           &trans  &trans            &trans             &trans             &kp LEFT_BRACE          &kp RIGHT_BRACE      &trans      &trans         &kp LT         &kp GT                &kp QUESTION           &to 0
-                                           &kp ESCAPE        &kp LEFT_ALT       &kp LEFT_COMMAND   &git_pull_origin_dev    &git_push_no_verify  &to 2       &to 3          &kp BACKSLASH
+&kp TILDE         &kp EXCLAMATION  &kp AT     &kp HASH          &kp DOLLAR         &kp PERCENT                                         &kp CARET            &kp AMPERSAND       &kp ASTERISK   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
+&kp F1            &kp F2           &kp F3     &kp F4            &kp F5             &kp F6                                              &kp F7               &kp F8              &kp F9         &kp F10               &kp F11                &kp PLUS
+&kp LEFT_SHIFT    &trans           &trans     &ext_power EP_ON  &ext_power EP_OFF  &ext_power EP_TOG                                   &bt BT_CLR           &bt BT_SEL 0        &bt BT_SEL 1   &trans                &kp COLON              &kp PIPE
+&kp LEFT_CONTROL  &aws_sso_login   &open_k9s  &macrocosm_setup  &garden_deploy     &trans             &tog 0    &tog 3                 &vim_save_and_close  &vim_save_and_exit  &kp LT         &kp GT                &kp QUESTION           &trans
+                                              &kp ESCAPE        &kp LEFT_ALT       &kp LEFT_COMMAND   &tog 2    &open_nvim_in_current  &vim_save            &vim_quit           &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -76,23 +125,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&kp TILDE  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                                     &kp CARET    &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans
-&kp GRAVE  &kp N1           &kp N2       &kp N3    &kp N4      &kp N5                                          &kp N6       &kp N7         &kp N8        &kp N9                &kp N0                 &trans
-&kp F1     &kp F2           &kp F3       &kp F4    &kp F5      &kp F6                                          &kp LEFT     &kp DOWN       &kp UP_ARROW  &kp RIGHT             &trans                 &trans
-&kp F7     &kp F8           &kp F9       &kp F10   &kp F11     &kp F12      &kp LEFT_BRACE    &kp RIGHT_BRACE  &kp KP_PLUS  &kp MINUS      &kp EQUAL     &kp LBKT              &kp RBKT               &to 0
-                                         &trans    &trans      &trans       &trans            &trans           &to 1        &trans         &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-        };
-
-        windows {
-            bindings = <
-&kp GRAVE         &kp N1  &kp N2  &kp N3   &kp N4        &kp N5                                    &kp N6  &kp N7   &kp N8         &kp N9   &kp N0    &to 4
-&kp TAB           &kp Q   &kp W   &kp E    &kp R         &kp T                                     &kp Y   &kp U    &kp I          &kp O    &kp P     &kp BACKSPACE
-&kp LEFT_SHIFT    &kp A   &kp S   &kp D    &kp F         &kp G                                     &kp H   &kp J    &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LEFT_CONTROL  &kp Z   &kp X   &kp C    &kp V         &kp B             &kp LBKT     &kp RBKT   &kp N   &kp M    &kp COMMA      &kp DOT  &kp FSLH  &to 2
-                                  &kp ESC  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE    &kp ENTER  &to 1   &kp DEL  &kp BACKSLASH
+&kp TILDE  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                    &kp CARET    &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
+&kp GRAVE  &kp N1           &kp N2       &kp N3    &kp N4      &kp N5                         &kp N6       &kp N7         &kp N8        &kp N9                &kp N0                 &kp KP_PLUS
+&kp F1     &kp F2           &kp F3       &kp F4    &kp F5      &kp F6                         &kp LEFT     &kp DOWN       &kp UP_ARROW  &kp RIGHT             &trans                 &trans
+&kp F7     &kp F8           &kp F9       &kp F10   &kp F11     &kp F12      &tog 0    &tog 3  &kp KP_PLUS  &kp MINUS      &kp EQUAL     &kp LBKT              &kp RBKT               &trans
+                                         &trans    &trans      &trans       &tog 1    &trans  &trans       &trans         &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
