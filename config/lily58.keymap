@@ -37,17 +37,17 @@
 
         to_layer_1 {
             bindings = <&to 1>;
-            key-positions = <55 0>;
+            key-positions = <55 1>;
         };
 
         to_layer_2 {
             bindings = <&to 2>;
-            key-positions = <1 55>;
+            key-positions = <55 2>;
         };
 
         to_layer_3 {
             bindings = <&to 3>;
-            key-positions = <55 2>;
+            key-positions = <55 3>;
         };
 
         to_layer_0 {
