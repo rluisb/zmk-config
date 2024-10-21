@@ -6,72 +6,88 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
     macros {
-        vim_save: vim_save {
+        increase_window_size: increase_window_size {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp ESCAPE &kp COLON &kp W &kp ENTER>;
-            label = "VIM_SAVE";
+            bindings = <&kp LEFT_ALT &kp LEFT_SHIFT &kp KP_PLUS>;
+            label = "INCREASE_WINDOW_SIZE";
         };
 
-        vim_save_and_close: vim_save_and_close {
+        decrease_window_size: decrease_window_size {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp ESCAPE &kp COLON &kp X &kp ENTER>;
-            label = "VIM_SAVE_AND_CLOSE";
+            bindings = <&kp LEFT_ALT &kp LEFT_SHIFT &kp MINUS>;
+            label = "DECREASE_WINDOW_SIZE";
         };
 
-        vim_quit: vim_quit {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp ESCAPE &kp COLON &kp Q &kp ENTER>;
-            label = "VIM_QUIT";
-        };
-
-        vim_save_and_exit: vim_save_and_exit {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp ESCAPE &kp COLON &kp W &kp Q &kp ENTER>;
-            label = "VIM_SAVE_AND_EXIT";
-        };
-
-        open_nvim_in_current: open_nvim_in_current {
+        open_nvim: open_nvim {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp N &kp V &kp I &kp M &kp SPACE &kp DOT &kp ENTER>;
-            label = "OPEN_NVIM_IN_CURRENT";
+            label = "OPEN_NVIM";
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        to_layer_1 {
+            bindings = <&to 1>;
+            key-positions = <55 0>;
         };
 
-        aws_sso_login: aws_sso_login {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp A &kp W &kp S &kp SPACE &kp S &kp S &kp O &kp SPACE &kp L &kp O &kp G &kp I &kp N &kp SPACE &kp MINUS &kp MINUS &kp P &kp R &kp O &kp F &kp I &kp L &kp E &kp SPACE &kp C &kp O &kp S &kp M &kp MINUS &kp N &kp O &kp N &kp P &kp R &kp O &kp D &kp ENTER>;
-            label = "AWS_SSO_LOGIN";
+        to_layer_2 {
+            bindings = <&to 2>;
+            key-positions = <1 55>;
         };
 
-        open_k9s: open_k9s {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp K &kp N9 &kp S &kp ENTER>;
-            label = "OPEN_K9S";
+        to_layer_3 {
+            bindings = <&to 3>;
+            key-positions = <55 2>;
         };
 
-        macrocosm_setup: macrocosm_setup {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp M &kp A &kp C &kp R &kp O &kp C &kp O &kp S &kp M &kp SPACE &kp S &kp E &kp T &kp U &kp P &kp SPACE &kp MINUS &kp MINUS &kp D &kp E &kp V &kp SPACE>;
-            label = "MACROCOSM_SETUP";
+        to_layer_0 {
+            bindings = <&to 0>;
+            key-positions = <55 10>;
         };
 
-        garden_deploy: garden_deploy {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp G &kp A &kp R &kp D &kp E &kp N &kp SPACE &kp D &kp E &kp P &kp L &kp O &kp Y &kp ENTER>;
-            label = "GARDEN_DEPLOY";
+        arrow_up {
+            bindings = <&kp UP_ARROW>;
+            key-positions = <49 32>;
+        };
+
+        arrow_down {
+            bindings = <&kp DOWN_ARROW>;
+            key-positions = <49 31>;
+        };
+
+        arrow_left {
+            bindings = <&kp LEFT_ARROW>;
+            key-positions = <49 30>;
+        };
+
+        arrow_right {
+            bindings = <&kp RIGHT_ARROW>;
+            key-positions = <49 33>;
+        };
+
+        increase_window_size {
+            bindings = <&increase_window_size>;
+            key-positions = <49 23>;
+        };
+
+        decrease_window_size {
+            bindings = <&decrease_window_size>;
+            key-positions = <49 11>;
+        };
+
+        open_nvim {
+            bindings = <&open_nvim>;
+            key-positions = <36 21>;
         };
     };
 
@@ -87,11 +103,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp ESCAPE        &kp N1  &kp N2  &kp N3     &kp N4        &kp N5                                    &kp N6            &kp N7         &kp N8         &kp N9   &kp N0    &kp MINUS
-&kp TAB           &kp Q   &kp W   &kp E      &kp R         &kp T                                     &kp Y             &kp U          &kp I          &kp O    &kp P     &kp BACKSPACE
-&kp LEFT_SHIFT    &kp A   &kp S   &kp D      &kp F         &kp G                                     &kp H             &kp J          &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LEFT_CONTROL  &kp Z   &kp X   &kp C      &kp V         &kp B             &to 1        &to 2      &kp N             &kp M          &kp COMMA      &kp DOT  &kp FSLH  &kp RIGHT_BRACKET
-                                  &kp GRAVE  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE    &kp ENTER  &kp LEFT_BRACKET  &kp RIGHT_ALT  &kp BACKSLASH
+&kp ESCAPE        &kp N1  &kp N2  &kp N3     &kp N4        &kp N5                                                   &kp N6             &kp N7         &kp N8         &kp N9   &kp N0    &kp MINUS
+&kp TAB           &kp Q   &kp W   &kp E      &kp R         &kp T                                                    &kp Y              &kp U          &kp I          &kp O    &kp P     &kp BACKSPACE
+&kp LEFT_SHIFT    &kp A   &kp S   &kp D      &kp F         &kp G                                                    &kp H              &kp J          &kp K          &kp L    &kp SEMI  &kp SQT
+&kp LEFT_CONTROL  &kp Z   &kp X   &kp C      &kp V         &kp B             &kp LEFT_BRACKET    &kp RIGHT_BRACKET  &kp N              &kp M          &kp COMMA      &kp DOT  &kp FSLH  &kp DELETE
+                                  &kp GRAVE  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE           &kp ENTER          &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -106,11 +122,11 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-&kp TILDE         &kp EXCLAMATION  &kp AT     &kp HASH          &kp DOLLAR         &kp PERCENT                                        &kp CARET            &kp AMPERSAND       &kp ASTERISK   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
-&kp F1            &kp F2           &kp F3     &kp F4            &kp F5             &kp F6                                             &kp F7               &kp F8              &kp F9         &kp F10               &kp F11                &kp PLUS
-&kp LEFT_SHIFT    &trans           &trans     &ext_power EP_ON  &ext_power EP_OFF  &ext_power EP_TOG                                  &bt BT_CLR           &bt BT_SEL 0        &bt BT_SEL 1   &trans                &kp COLON              &kp PIPE
-&kp LEFT_CONTROL  &aws_sso_login   &open_k9s  &macrocosm_setup  &garden_deploy     &trans             &to 0    &to 3                  &vim_save_and_close  &vim_save_and_exit  &kp LT         &kp GT                &kp QUESTION           &trans
-                                              &kp ESCAPE        &kp LEFT_ALT       &kp LEFT_COMMAND   &to 2    &open_nvim_in_current  &vim_save            &vim_quit           &kp BACKSLASH
+&kp TILDE         &kp EXCLAMATION  &kp AT  &kp HASH    &kp DOLLAR    &kp PERCENT                         &kp CARET   &kp AMPERSAND  &kp ASTERISK   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
+&kp F1            &kp F2           &kp F3  &kp F4      &kp F5        &kp F6                              &kp F7      &kp F8         &kp F9         &kp F10               &kp F11                &kp PLUS
+&kp LEFT_SHIFT    &trans           &trans  &trans      &trans        &trans                              &bt BT_CLR  &bt BT_SEL 0   &bt BT_SEL 1   &trans                &kp COLON              &kp PIPE
+&kp LEFT_CONTROL  &trans           &trans  &trans      &trans        &trans            &trans    &trans  &trans      &trans         &kp LT         &kp GT                &kp QUESTION           &to 2
+                                           &kp ESCAPE  &kp LEFT_ALT  &kp LEFT_COMMAND  &trans    &trans  &to 0       &to 3          &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -128,8 +144,8 @@
 &kp TILDE  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                   &kp CARET    &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
 &kp GRAVE  &kp N1           &kp N2       &kp N3    &kp N4      &kp N5                        &kp N6       &kp N7         &kp N8        &kp N9                &kp N0                 &kp KP_PLUS
 &kp F1     &kp F2           &kp F3       &kp F4    &kp F5      &kp F6                        &kp LEFT     &kp DOWN       &kp UP_ARROW  &kp RIGHT             &trans                 &trans
-&kp F7     &kp F8           &kp F9       &kp F10   &kp F11     &kp F12      &to 0    &to 3   &kp KP_PLUS  &kp MINUS      &kp EQUAL     &kp LBKT              &kp RBKT               &trans
-                                         &trans    &trans      &trans       &to 1    &trans  &trans       &trans         &trans
+&kp F7     &kp F8           &kp F9       &kp F10   &kp F11     &kp F12      &to 0    &to 3   &kp KP_PLUS  &kp MINUS      &kp EQUAL     &kp LBKT              &kp RBKT               &to 3
+                                         &trans    &trans      &trans       &to 1    &trans  &to 1        &to 0          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -137,11 +153,11 @@
 
         fortnite {
             bindings = <
-&kp ESCAPE        &kp N1  &kp N2  &kp N3  &kp N4            &kp N5                          &kp N6  &kp N7   &kp N8         &kp N9   &kp N0    &kp MINUS
-&kp TAB           &kp Q   &kp W   &kp E   &kp R             &kp T                           &kp Y   &kp U    &kp I          &kp O    &kp P     &kp BACKSPACE
-&kp LEFT_SHIFT    &kp A   &kp S   &kp D   &kp F             &kp G                           &kp H   &kp J    &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LEFT_CONTROL  &kp Z   &kp X   &kp C   &kp V             &kp B   &kp LBKT     &kp RBKT   &kp N   &kp M    &kp COMMA      &kp DOT  &kp FSLH  &to 0
-                                  &kp H   &kp LEFT_CONTROL  &kp M   &kp SPACE    &kp ENTER  &to 1   &kp DEL  &kp BACKSLASH
+&kp ESCAPE        &kp N1  &kp N2  &kp N3  &kp N4            &kp N5                          &kp N6  &kp N7  &kp N8         &kp N9   &kp N0    &kp MINUS
+&kp TAB           &kp Q   &kp W   &kp E   &kp R             &kp T                           &kp Y   &kp U   &kp I          &kp O    &kp P     &kp BACKSPACE
+&kp LEFT_SHIFT    &kp A   &kp S   &kp D   &kp F             &kp G                           &kp H   &kp J   &kp K          &kp L    &kp SEMI  &kp SQT
+&kp LEFT_CONTROL  &kp Z   &kp X   &kp C   &kp V             &kp B   &kp LBKT     &kp RBKT   &kp N   &kp M   &kp COMMA      &kp DOT  &kp FSLH  &to 1
+                                  &kp H   &kp LEFT_CONTROL  &kp M   &kp SPACE    &kp ENTER  &to 0   &to 2   &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
