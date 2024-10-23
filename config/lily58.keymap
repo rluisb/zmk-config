@@ -75,14 +75,9 @@
             key-positions = <49 33>;
         };
 
-        increase_window_size {
-            bindings = <&increase_window_size>;
-            key-positions = <49 23>;
-        };
-
-        decrease_window_size {
-            bindings = <&decrease_window_size>;
-            key-positions = <49 11>;
+        plus {
+            bindings = <&kp KP_PLUS>;
+            key-positions = <49 22>;
         };
 
         open_nvim {
@@ -92,7 +87,7 @@
 
         equal {
             bindings = <&kp EQUAL>;
-            key-positions = <49 55 23 24>;
+            key-positions = <55 15>;
         };
     };
 
