@@ -9,29 +9,6 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    macros {
-        increase_window_size: increase_window_size {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT &kp LEFT_SHIFT &kp KP_PLUS>;
-            label = "INCREASE_WINDOW_SIZE";
-        };
-
-        decrease_window_size: decrease_window_size {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_ALT &kp LEFT_SHIFT &kp MINUS>;
-            label = "DECREASE_WINDOW_SIZE";
-        };
-
-        open_nvim: open_nvim {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp N &kp V &kp I &kp M &kp SPACE &kp DOT &kp ENTER>;
-            label = "OPEN_NVIM";
-        };
-    };
-
     combos {
         compatible = "zmk,combos";
 
@@ -53,41 +30,6 @@
         to_layer_0 {
             bindings = <&to 0>;
             key-positions = <55 10>;
-        };
-
-        arrow_up {
-            bindings = <&kp UP_ARROW>;
-            key-positions = <49 32>;
-        };
-
-        arrow_down {
-            bindings = <&kp DOWN_ARROW>;
-            key-positions = <49 31>;
-        };
-
-        arrow_left {
-            bindings = <&kp LEFT_ARROW>;
-            key-positions = <49 30>;
-        };
-
-        arrow_right {
-            bindings = <&kp RIGHT_ARROW>;
-            key-positions = <49 33>;
-        };
-
-        plus {
-            bindings = <&kp KP_PLUS>;
-            key-positions = <49 22>;
-        };
-
-        open_nvim {
-            bindings = <&open_nvim>;
-            key-positions = <36 21>;
-        };
-
-        equal {
-            bindings = <&kp EQUAL>;
-            key-positions = <55 15>;
         };
     };
 
@@ -127,6 +69,24 @@
             #binding-cells = <0>;
             mods = <(MOD_RCTL|MOD_RSFT)>;
         };
+
+        p_plus: p_plus {
+            compatible = "zmk,behavior-mod-morph";
+            label = "P_PLUS";
+            bindings = <&kp P>, <&kp KP_PLUS>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_RCTL)>;
+        };
+
+        e_equal: e_equal {
+            compatible = "zmk,behavior-mod-morph";
+            label = "E_EQUAL";
+            bindings = <&kp E>, <&kp KP_EQUAL>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_RCTL)>;
+        };
     };
 
     keymap {
@@ -142,9 +102,9 @@
 
             bindings = <
 &kp ESCAPE        &kp N1  &kp N2  &kp N3     &kp N4        &kp N5                                                   &kp N6             &kp N7         &kp N8         &kp N9          &kp N0    &kp MINUS
-&kp TAB           &kp Q   &kp W   &kp E      &kp R         &kp T                                                    &kp Y              &kp U          &kp I          &kp O           &kp P     &kp BACKSPACE
+&kp TAB           &kp Q   &kp W   &e_equal   &kp R         &kp T                                                    &kp Y              &kp U          &kp I          &kp O           &p_plus   &kp BACKSPACE
 &kp LEFT_SHIFT    &kp A   &kp S   &kp D      &kp F         &kp G                                                    &h_left_arrow      &j_down_arrow  &k_up_arrow    &l_right_arrow  &kp SEMI  &kp SQT
-&kp LEFT_CONTROL  &kp Z   &kp X   &kp C      &kp V         &kp B             &kp LEFT_BRACKET    &kp RIGHT_BRACKET  &kp N              &kp M          &kp COMMA      &kp DOT         &kp FSLH  &kp RS(RIGHT_CONTROL)
+&kp LEFT_CONTROL  &kp Z   &kp X   &kp C      &kp V         &kp B             &kp LEFT_BRACKET    &kp RIGHT_BRACKET  &kp N              &kp M          &kp COMMA      &kp DOT         &kp FSLH  &mt RC(RIGHT_SHIFT) DELETE
                                   &kp GRAVE  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE           &kp ENTER          &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp BACKSLASH
             >;
 
