@@ -87,6 +87,25 @@
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_RCTL)>;
         };
+
+        workspace_change: workspace_change {
+            compatible = "zmk,behavior-hold-tap";
+            label = "WORKSPACE_CHANGE";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <0>;
+            flavor = "tap-preferred";
+        };
+    };
+
+    macros {
+        terminal_workspace: terminal_workspace {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&workspace_change LA(KP_NUMBER_1) NUMBER_1>;
+            label = "TERMINAL_WORKSPACE";
+        };
     };
 
     keymap {
@@ -101,11 +120,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp ESCAPE        &kp N1  &kp N2  &kp N3   &kp N4        &kp N5                                                   &kp N6                &kp N7         &kp N8         &kp N9          &kp N0    &kp GRAVE
-&kp TAB           &kp Q   &kp W   &kp E    &kp R         &kp T                                                    &kp Y                 &kp U          &kp I          &kp O           &p_plus   &kp BACKSPACE
-&kp LEFT_SHIFT    &kp A   &kp S   &kp D    &kp F         &kp G                                                    &h_left_arrow         &j_down_arrow  &k_up_arrow    &l_right_arrow  &kp SEMI  &kp SQT
-&kp LEFT_CONTROL  &kp Z   &kp X   &kp C    &kp V         &kp B             &kp LEFT_BRACKET    &kp RIGHT_BRACKET  &kp N                 &kp M          &kp COMMA      &kp DOT         &kp FSLH  &kp EQUAL
-                                  &kp F12  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE           &kp ENTER          &mt RC(RSHFT) DELETE  &kp MINUS      &kp BACKSLASH
+&kp ESCAPE        &terminal_workspace  &kp N2  &kp N3   &kp N4        &kp N5                                                   &kp N6                &kp N7         &kp N8         &kp N9          &kp N0    &kp GRAVE
+&kp TAB           &kp Q                &kp W   &kp E    &kp R         &kp T                                                    &kp Y                 &kp U          &kp I          &kp O           &p_plus   &kp BACKSPACE
+&kp LEFT_SHIFT    &kp A                &kp S   &kp D    &kp F         &kp G                                                    &h_left_arrow         &j_down_arrow  &k_up_arrow    &l_right_arrow  &kp SEMI  &kp SQT
+&kp LEFT_CONTROL  &kp Z                &kp X   &kp C    &kp V         &kp B             &kp LEFT_BRACKET    &kp RIGHT_BRACKET  &kp N                 &kp M          &kp COMMA      &kp DOT         &kp FSLH  &kp EQUAL
+                                               &kp F12  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE           &kp ENTER          &mt RC(RSHFT) DELETE  &kp MINUS      &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
