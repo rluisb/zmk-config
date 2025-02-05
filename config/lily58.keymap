@@ -103,9 +103,9 @@
             compatible = "zmk,behavior-tap-dance";
             label = "WORKSPACE_1_TAP_DANCE";
             #binding-cells = <0>;
-            bindings = <&kp N1>, <&kp A>;
+            bindings = <&kp N1>, <&kp LA(N1)>;
 
-            tapping-term-ms = <50>;
+            tapping-term-ms = <10>;
         };
     };
 
