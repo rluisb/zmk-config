@@ -94,9 +94,8 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <1>;
+            tapping-term-ms = <150>;
             flavor = "tap-preferred";
-            quick-tap-ms = <3>;
         };
 
         c_accent_tap_dance: c_accent_tap_dance {
