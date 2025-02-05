@@ -103,9 +103,16 @@
             compatible = "zmk,behavior-tap-dance";
             label = "WORKSPACE_1_TAP_DANCE";
             #binding-cells = <0>;
-            bindings = <&kp N1>, <&kp LA(N1)>;
+            bindings = <&kp N1>, <&workspace_1>;
+        };
+    };
 
-            tapping-term-ms = <100>;
+    macros {
+        workspace_1: workspace_1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LALT &kp KP_NUMBER_1>;
+            label = "WORKSPACE_1";
         };
     };
 
