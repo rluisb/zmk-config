@@ -34,7 +34,8 @@
 
         to_fedora {
             bindings = <&to 4>;
-            key-positions = <55 3>;
+            key-positions = <55 4>;
+            layers = <4>;
         };
     };
 
