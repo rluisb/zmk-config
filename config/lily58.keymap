@@ -12,24 +12,29 @@
     combos {
         compatible = "zmk,combos";
 
-        to_layer_1 {
+        to_macos_lower {
             bindings = <&to 1>;
             key-positions = <55 1>;
         };
 
-        to_layer_2 {
+        to_raise_layer {
             bindings = <&to 2>;
             key-positions = <55 2>;
         };
 
-        to_layer_3 {
+        to_fortnite_layer {
             bindings = <&to 3>;
             key-positions = <55 3>;
         };
 
-        to_layer_0 {
+        to_macos_layer {
             bindings = <&to 0>;
             key-positions = <55 10>;
+        };
+
+        to_fedora {
+            bindings = <&to 4>;
+            key-positions = <55 3>;
         };
     };
 
