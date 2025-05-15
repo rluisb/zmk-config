@@ -33,9 +33,8 @@
         };
 
         to_fedora {
-            bindings = <&to 4>;
+            bindings = <&to 0>;
             key-positions = <55 4>;
-            layers = <4>;
         };
     };
 
@@ -243,13 +242,25 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        fedora_hyprland {
+        arch {
             bindings = <
-&kp ESCAPE      &workspace_change LG(NUMBER_1) NUMBER_1  &workspace_change LG(NUMBER_2) NUMBER_2  &workspace_change LG(N3) N3  &workspace_change LG(N4) N4  &workspace_change LG(N5) N5                                                             &workspace_change LG(N6) NUMBER_6  &workspace_change LG(N7) N7  &workspace_change LG(N8) N8  &workspace_change LG(N9) N9  &workspace_change LG(N0) N0  &kp GRAVE
-&kp TAB         &kp Q                                    &kp W                                    &home_row HOME E             &kp R                        &kp T                                                                                   &kp Y                              &kp U                        &home_row END I              &kp O                        &kp P                        &kp BACKSPACE
-&kp LEFT_SHIFT  &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                                                   &h_left_arrow                      &j_down_arrow                &k_up_arrow                  &l_right_arrow               &kp SEMI                     &kp SQT
-&kp LEFT_GUI    &kp Z                                    &kp X                                    &kp C                        &kp V                        &kp B                        &kp LEFT_BRACKET                &kp RIGHT_BRACKET          &kp N                              &kp M                        &kp COMMA                    &kp DOT                      &kp FSLH                     &kp EQUAL
-                                                                                                  &kp LC(SPACE)                &kp LEFT_ALT                 &kp LEFT_CONTROL             &tmux_leader LC(SPACE) SPACE    &mt RC(RIGHT_SHIFT) ENTER  &mt RC(RSHFT) DELETE               &kp MINUS                    &kp BACKSLASH
+&kp ESCAPE      &workspace_change LA(NUMBER_1) NUMBER_1  &workspace_change LA(NUMBER_2) NUMBER_2  &workspace_change LA(N3) N3  &workspace_change LA(N4) N4  &workspace_change LA(DOT) N5                                                             &kp N6                &workspace_change LA(N7) N7  &kp N8           &kp N9          &kp N0    &kp GRAVE
+&kp TAB         &kp Q                                    &kp W                                    &home_row HOME E             &kp R                        &kp T                                                                                    &kp Y                 &kp U                        &home_row END I  &kp O           &kp P     &kp BACKSPACE
+&kp LEFT_SHIFT  &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                                                    &h_left_arrow         &j_down_arrow                &k_up_arrow      &l_right_arrow  &kp SEMI  &kp SQT
+&kp LEFT_GUI    &kp Z                                    &kp X                                    &kp C                        &kp V                        &kp B                         &kp LEFT_BRACKET                &kp RIGHT_BRACKET          &kp N                 &kp M                        &kp COMMA        &kp DOT         &kp FSLH  &kp EQUAL
+                                                                                                  &kp LC(SPACE)                &kp LEFT_ALT                 &kp LEFT_CONTROL              &tmux_leader LC(SPACE) SPACE    &mt RC(RIGHT_SHIFT) ENTER  &mt RC(RSHFT) DELETE  &kp MINUS                    &kp BACKSLASH
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        arch_lower_layer {
+            bindings = <
+&kp TILDE       &kp EXCLAMATION  &kp AT  &kp HASH    &kp DOLLAR    &kp PERCENT                         &kp CARET   &kp AMPERSAND  &kp ASTERISK   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
+&kp F1          &kp F2           &kp F3  &kp F4      &kp F5        &kp F6                              &kp F7      &kp F8         &kp F9         &kp F10               &kp F11                &kp PLUS
+&kp LEFT_SHIFT  &trans           &trans  &trans      &trans        &trans                              &bt BT_CLR  &bt BT_SEL 0   &bt BT_SEL 1   &trans                &kp COLON              &kp PIPE
+&kp LEFT_GUI    &trans           &trans  &trans      &trans        &trans            &trans    &trans  &trans      &trans         &kp LT         &kp GT                &kp QUESTION           &trans
+                                         &kp ESCAPE  &kp LEFT_ALT  &kp LEFT_CONTROL  &trans    &trans  &trans      &trans         &kp BACKSLASH
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
