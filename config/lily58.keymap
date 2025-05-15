@@ -32,9 +32,14 @@
             key-positions = <55 10>;
         };
 
-        to_fedora {
-            bindings = <&to 0>;
+        to_arch {
+            bindings = <&to 4>;
             key-positions = <55 4>;
+        };
+
+        to_arch_lower {
+            bindings = <&to 5>;
+            key-positions = <55 5>;
         };
     };
 
