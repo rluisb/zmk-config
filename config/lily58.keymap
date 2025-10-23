@@ -22,24 +22,29 @@
             key-positions = <55 2>;
         };
 
-        to_fortnite_layer {
-            bindings = <&to 6>;
-            key-positions = <55 3>;
-        };
-
         to_macos_layer {
             bindings = <&to 0>;
             key-positions = <55 10>;
         };
 
-        to_arch {
-            bindings = <&to 0>;
+        to_linux {
+            bindings = <&to 3>;
+            key-positions = <55 3>;
+        };
+
+        to_linux_lower {
+            bindings = <&to 4>;
             key-positions = <55 4>;
         };
 
-        to_arch_lower {
-            bindings = <&to 0>;
+        to_linux_raise {
+            bindings = <&to 5>;
             key-positions = <55 5>;
+        };
+
+        to_fortnite {
+            bindings = <&to 6>;
+            key-positions = <6 55>;
         };
     };
 
