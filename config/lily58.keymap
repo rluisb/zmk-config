@@ -35,7 +35,12 @@
 
         to_fortnite {
             bindings = <&to 5>;
-            key-positions = <6 55>;
+            key-positions = <55 5>;
+        };
+
+        adjust {
+            bindings = <&to 4>;
+            key-positions = <55 4>;
         };
     };
 
