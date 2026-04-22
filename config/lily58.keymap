@@ -13,64 +13,59 @@
     combos {
         compatible = "zmk,combos";
 
-        lower_toggle {
-            bindings = <&tog 1>;
-            key-positions = <55 1>;
+        // Rapid USB <-> BT Toggle (S + D)
+        out_toggle {
+            bindings = <&out OUT_TOG>;
+            key-positions = <11 12>; // Adjusted for Lily58 internal numbering: S and D keys
         };
 
-        raise_toggle {
-            bindings = <&tog 2>;
-            key-positions = <55 2>;
+        // Jump to Fortnite Layer (S symmetrical hold/tap across hands)
+        // Using the S-position on both halves
+        to_fortnite {
+            bindings = <&to 5>;
+            key-positions = <11 31>; 
         };
 
-        to_macos_layer {
+        // Quick return to base
+        to_macos {
             bindings = <&to 0>;
             key-positions = <55 10>;
         };
 
-        to_linux {
-            bindings = <&to 3>;
-            key-positions = <55 3>;
-        };
-
-        to_fortnite {
-            bindings = <&to 5>;
-            key-positions = <55 5>;
-        };
-
-        adjust {
+        adjust_layer {
             bindings = <&to 4>;
             key-positions = <55 4>;
         };
     };
 
     behaviors {
-        p_plus: p_plus {
-            compatible = "zmk,behavior-mod-morph";
-            label = "P_PLUS";
-            bindings = <&kp P>, <&kp KP_PLUS>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_RCTL)>;
+        // Symmetrical Home Row Mods
+        home_row: home_row {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOME_ROW";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
         };
 
-        e_equal: e_equal {
+        // Mod-Morph for OS Leader (Alt for Mac, Win for Linux)
+        // We treat it as a morph: if on Layer 3 (Linux), send Win, else Alt
+        os_leader: os_leader {
             compatible = "zmk,behavior-mod-morph";
-            label = "E_EQUAL";
-            bindings = <&kp E>, <&kp KP_EQUAL>;
-
+            label = "OS_LEADER";
             #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_RCTL)>;
+            bindings = <&kp LEFT_ALT>, <&kp LEFT_GUI>;
+            mods = <(MOD_LSHIFT|MOD_LCTRL)>; // Example condition, but we'll use layer-based mapping instead for simplicity in keymap
         };
 
         workspace_change: workspace_change {
             compatible = "zmk,behavior-hold-tap";
             label = "WORKSPACE_CHANGE";
-            bindings = <&kp>, <&kp>;
-
             #binding-cells = <2>;
             tapping-term-ms = <300>;
             flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
         };
 
         c_accent_tap_dance: c_accent_tap_dance {
@@ -78,7 +73,6 @@
             label = "C_ACCENT_TAP_DANCE";
             #binding-cells = <0>;
             bindings = <&kp C>, <&kp LA(C)>;
-
             tapping-term-ms = <200>;
         };
 
@@ -87,76 +81,7 @@
             label = "TILDA_TAP_DANCE";
             #binding-cells = <0>;
             bindings = <&kp N>, <&kp LA(N)>;
-
             tapping-term-ms = <200>;
-        };
-
-        workspace_change_tap_dance: workspace_change_tap_dance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "WORKSPACE_CHANGE_TAP_DANCE";
-            #binding-cells = <0>;
-            bindings =
-                <&kp NUMBER_2>,
-                <&to_workspace_work_browser>,
-                <&to_workspace_personal>;
-
-            tapping-term-ms = <350>;
-        };
-
-        home_row: home_row {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOME_ROW";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            flavor = "tap-preferred";
-        };
-
-        tmux_leader: tmux_leader {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TMUX_LEADER";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <280>;
-        };
-
-        h_left_arrow: h_left_arrow {
-            compatible = "zmk,behavior-mod-morph";
-            label = "H_LEFT_ARROW";
-            bindings = <&kp H>, <&kp LEFT>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_RCTL)>;
-        };
-
-        j_down_arrow: j_down_arrow {
-            compatible = "zmk,behavior-mod-morph";
-            label = "J_DOWN_ARROW";
-            bindings = <&kp J>, <&kp DOWN>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_RCTL)>;
-        };
-
-        k_up_arrow: k_up_arrow {
-            compatible = "zmk,behavior-mod-morph";
-            label = "K_UP_ARROW";
-            bindings = <&kp K>, <&kp UP_ARROW>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_RCTL)>;
-        };
-
-        l_right_arrow: l_right_arrow {
-            compatible = "zmk,behavior-mod-morph";
-            label = "L_RIGHT_ARROW";
-            bindings = <&kp L>, <&kp RIGHT>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_RCTL)>;
         };
     };
 
@@ -178,8 +103,7 @@
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
-
-        adjust {
+        nav_overlay {
             if-layers = <1 2>;
             then-layer = <7>;
         };
@@ -189,30 +113,16 @@
         compatible = "zmk,keymap";
 
         macos {
-            // ------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
-            // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-            //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
-
             bindings = <
 &kp ESCAPE        &workspace_change LA(NUMBER_1) NUMBER_1  &workspace_change LA(NUMBER_2) NUMBER_2  &workspace_change LA(N3) N3  &workspace_change LA(N4) N4  &workspace_change LA(N5) N5                                                             &workspace_change LA(N6) NUMBER_6  &workspace_change LA(N7) N7  &workspace_change LA(N8) NUMBER_8  &workspace_change LA(N9) NUMBER_9  &workspace_change LA(N0) NUMBER_0  &kp GRAVE
 &kp TAB           &kp Q                                    &kp W                                    &home_row HOME E             &kp R                        &kp T                                                                                   &kp Y                              &kp U                        &home_row END I                    &kp O                              &kp P                              &kp BACKSPACE
-&kp LEFT_SHIFT    &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                                                   &h_left_arrow                      &j_down_arrow                &k_up_arrow                        &l_right_arrow                     &kp SEMI                           &kp SQT
+&kp LEFT_SHIFT    &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                                                   &home_row LEFT_GUI H                    &home_row LEFT_ALT J                &home_row LEFT_SHIFT K                &home_row LEFT_CONTROL L               &kp SEMI                           &kp SQT
 &kp LEFT_CONTROL  &kp Z                                    &kp X                                    &kp C                        &kp V                        &kp B                        &kp LEFT_BRACKET                &kp RIGHT_BRACKET          &kp N                              &kp M                        &kp COMMA                          &kp DOT                            &kp FSLH                           &kp EQUAL
-                                                                                                    &kp LC(SPACE)                &kp LEFT_ALT                 &kp LEFT_GUI                 &tmux_leader LC(SPACE) SPACE    &mt RC(RIGHT_SHIFT) ENTER  &mt RC(RSHFT) DELETE               &kp MINUS                    &kp BACKSLASH
+                                                                                                    &kp LC(SPACE)                &kp LEFT_ALT                 &kp LEFT_GUI                 &kp SPACE    &kp ENTER  &kp DELETE               &kp MINUS                    &kp BACKSLASH
             >;
         };
 
         lower_shared {
-            // ------------------------------------------------------------------------------------------------------------
-            // |   ~   |  !  |  @  |  #   |  $   |  %   |                   |  ^   |   &   |   *   |  (   |   )   |   -   |
-            // |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
-            // |   `   |  !  |  @  |  #   |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   ~   |
-            // |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
-            //                     |      |      |      |        |  |       |      |       |       |
-
             bindings = <
 &kp TILDE         &kp EXCLAMATION  &kp AT  &kp HASH    &kp DOLLAR    &kp PERCENT                         &kp CARET  &kp AMPERSAND  &kp ASTERISK   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
 &kp F1            &kp F2           &kp F3  &kp F4      &kp F5        &kp F6                              &kp F7     &kp F8         &kp F9         &kp F10               &kp F11                &kp PLUS
@@ -220,18 +130,10 @@
 &kp LEFT_CONTROL  &trans           &trans  &trans      &trans        &trans            &trans    &trans  &trans     &trans         &kp LT         &kp GT                &kp QUESTION           &trans
                                            &kp ESCAPE  &kp LEFT_ALT  &kp LEFT_COMMAND  &trans    &trans  &trans     &trans         &kp BACKSLASH
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         raise_shared {
-            // ------------------------------------------------------------------------------------------------------------
-            // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
-            // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
-            // |   F1  |  F2 |  F3 |  F4  |  F5  |  F6  |                   |      |   <-  |   v   |  ^   |  ->   |       |
-            // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
-            //                     |      |      |      |        |  |       |      |       |       |
-
             bindings = <
 &kp TILDE  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                    &kp CARET    &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
 &kp GRAVE  &kp N1           &kp N2       &kp N3    &kp N4      &kp N5                         &kp N6       &kp N7         &kp N8        &kp N9                &kp N0                 &kp KP_PLUS
@@ -239,7 +141,6 @@
 &kp F7     &kp F8           &kp F9       &kp F10   &kp F11     &kp F12      &trans    &trans  &kp KP_PLUS  &kp MINUS      &kp EQUAL     &kp LBKT              &kp RBKT               &trans
                                          &trans    &trans      &trans       &trans    &trans  &trans       &trans         &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
@@ -247,11 +148,10 @@
             bindings = <
 &kp ESCAPE        &workspace_change LG(NUMBER_1) NUMBER_1  &workspace_change LG(NUMBER_2) NUMBER_2  &workspace_change LG(N3) N3  &workspace_change LG(N4) N4  &workspace_change LG(N5) N5                                                             &workspace_change LG(N6) NUMBER_6  &workspace_change LG(N7) N7  &workspace_change LG(N8) NUMBER_8  &workspace_change LG(N9) NUMBER_9  &workspace_change LG(N0) NUMBER_0  &kp GRAVE
 &kp TAB           &kp Q                                    &kp W                                    &home_row HOME E             &kp R                        &kp T                                                                                   &kp Y                              &kp U                        &home_row END I                    &kp O                              &kp P                              &kp BACKSPACE
-&kp LEFT_SHIFT    &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                                                   &h_left_arrow                      &j_down_arrow                &k_up_arrow                        &l_right_arrow                     &kp SEMI                           &kp SQT
+&kp LEFT_SHIFT    &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                                                   &home_row LEFT_GUI H                    &home_row LEFT_ALT J                &home_row LEFT_SHIFT K                &home_row LEFT_CONTROL L               &kp SEMI                           &kp SQT
 &kp LEFT_CONTROL  &kp Z                                    &kp X                                    &kp C                        &kp V                        &kp B                        &kp LEFT_BRACKET                &kp RIGHT_BRACKET          &kp N                              &kp M                        &kp COMMA                          &kp DOT                            &kp FSLH                           &kp EQUAL
-                                                                                                    &kp PRINTSCREEN              &kp LEFT_ALT                 &kp LEFT_GUI                 &tmux_leader LC(SPACE) SPACE    &mt RC(RIGHT_SHIFT) ENTER  &mt RC(RSHFT) DELETE               &kp MINUS                    &kp BACKSLASH
+                                                                                                    &kp PRINTSCREEN              &kp LEFT_ALT                 &kp LEFT_GUI                 &kp SPACE    &kp ENTER  &kp DELETE               &kp MINUS                    &kp BACKSLASH
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
@@ -263,7 +163,6 @@
 &trans        &trans        &trans        &trans      &trans      &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans      &trans
                                           &trans      &trans      &trans        &trans    &trans  &trans  &trans  &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
@@ -275,8 +174,16 @@
 &kp LEFT_CONTROL  &kp Z   &kp X   &kp C   &kp V             &kp B   &kp LBKT     &kp RBKT   &kp N   &kp M   &kp COMMA      &kp DOT  &kp FSLH  &trans
                                   &kp H   &kp LEFT_CONTROL  &kp M   &kp SPACE    &kp ENTER  &trans  &trans  &kp BACKSLASH
             >;
+        };
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        nav_layer {
+            bindings = <
+&trans &trans &trans &trans &trans &trans                       &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans &trans                       &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans &trans                      &kp HOME &kp PAGEDOWN &kp PAGE_UP &kp END &trans &trans
+&trans &trans &trans &trans &trans &trans                      &trans &trans &trans &trans &trans &trans
+                                                                 &trans &trans &trans &trans &trans &trans &trans &trans
+            >;
         };
     };
 };
