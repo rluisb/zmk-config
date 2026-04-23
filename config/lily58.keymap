@@ -14,6 +14,7 @@
         compatible = "zmk,combos";
 
         // Rapid USB <-> BT Toggle (S + D)
+
         out_toggle {
             bindings = <&out OUT_TOG>;
             key-positions = <11 12>; // Adjusted for Lily58 internal numbering: S and D keys
@@ -23,14 +24,16 @@
 
         // Jump to Fortnite Layer (S symmetrical hold/tap across hands)
         // Using the S-position on both halves
+
         to_fortnite {
             bindings = <&to 5>;
-            key-positions = <11 31>; 
+            key-positions = <11 31>;
             layers = <0 3>;
             require-prior-idle-ms = <150>;
         };
 
         // Quick return to base
+
         to_macos {
             bindings = <&to 0>;
             key-positions = <55 10>;
@@ -44,6 +47,7 @@
 
     behaviors {
         // Symmetrical Home Row Mods
+
         home_row: home_row {
             compatible = "zmk,behavior-hold-tap";
             label = "HOME_ROW";
@@ -67,6 +71,7 @@
             label = "C_ACCENT_TAP_DANCE";
             #binding-cells = <0>;
             bindings = <&kp C>, <&kp LA(C)>;
+
             tapping-term-ms = <200>;
         };
 
@@ -75,6 +80,7 @@
             label = "TILDA_TAP_DANCE";
             #binding-cells = <0>;
             bindings = <&kp N>, <&kp LA(N)>;
+
             tapping-term-ms = <200>;
         };
     };
@@ -97,6 +103,7 @@
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
+
         nav_overlay {
             if-layers = <1 2>;
             then-layer = <6>;
@@ -108,11 +115,11 @@
 
         macos {
             bindings = <
-&kp ESCAPE        &workspace_change LA(NUMBER_1) NUMBER_1  &workspace_change LA(NUMBER_2) NUMBER_2  &workspace_change LA(N3) N3  &workspace_change LA(N4) N4  &workspace_change LA(N5) N5                                                             &workspace_change LA(N6) NUMBER_6  &workspace_change LA(N7) N7  &workspace_change LA(N8) NUMBER_8  &workspace_change LA(N9) NUMBER_9  &workspace_change LA(N0) NUMBER_0  &kp GRAVE
-&kp TAB           &kp Q                                    &kp W                                    &home_row HOME E             &kp R                        &kp T                                                                                   &kp Y                              &kp U                        &home_row END I                    &kp O                              &kp P                              &kp BACKSPACE
-&kp LEFT_SHIFT    &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                                                   &home_row LEFT_GUI H                    &home_row LEFT_ALT J                &home_row LEFT_SHIFT K                &home_row LEFT_CONTROL L               &kp SEMI                           &kp SQT
-&kp LEFT_CONTROL  &kp Z                                    &kp X                                    &kp C                        &kp V                        &kp B                        &kp LEFT_BRACKET                &kp RIGHT_BRACKET          &kp N                              &kp M                        &kp COMMA                          &kp DOT                            &kp FSLH                           &kp EQUAL
-                                                                                                    &kp LC(SPACE)                &mo 1                        &mo 2                        &kp SPACE    &kp ENTER  &kp DELETE               &kp MINUS                    &kp BACKSLASH
+&kp ESCAPE        &workspace_change LA(NUMBER_1) NUMBER_1  &workspace_change LA(NUMBER_2) NUMBER_2  &workspace_change LA(N3) N3  &workspace_change LA(N4) N4  &workspace_change LA(N5) N5                                         &workspace_change LA(N6) NUMBER_6  &workspace_change LA(N7) N7  &workspace_change LA(N8) NUMBER_8  &workspace_change LA(N9) NUMBER_9  &workspace_change LA(N0) NUMBER_0  &kp GRAVE
+&kp TAB           &kp Q                                    &kp W                                    &home_row HOME E             &kp R                        &kp T                                                               &kp Y                              &kp U                        &home_row END I                    &kp O                              &kp P                              &kp BACKSPACE
+&kp LEFT_SHIFT    &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                               &home_row LEFT_GUI H               &home_row LEFT_ALT J         &home_row LEFT_SHIFT K             &home_row LEFT_CONTROL L           &kp SEMI                           &kp SQT
+&kp LEFT_CONTROL  &kp Z                                    &kp X                                    &kp C                        &kp V                        &kp B                        &kp LEFT_BRACKET    &kp RIGHT_BRACKET  &kp N                              &kp M                        &kp COMMA                          &kp DOT                            &kp FSLH                           &kp EQUAL
+                                                                                                    &kp LC(SPACE)                &mo 1                        &mo 2                        &kp SPACE           &kp ENTER          &kp DELETE                         &kp MINUS                    &kp BACKSLASH
             >;
         };
 
@@ -124,29 +131,26 @@
 &kp LEFT_CONTROL  &trans           &trans  &trans      &trans        &trans            &trans    &trans  &trans     &trans         &kp LT         &kp GT                &kp QUESTION           &trans
                                            &kp ESCAPE  &kp LEFT_ALT  &kp LEFT_COMMAND  &trans    &trans  &trans     &trans         &kp BACKSLASH
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         raise_shared {
             bindings = <
-&kp TILDE  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                    &kp CARET    &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
-&kp GRAVE  &kp N1           &kp N2       &kp N3    &kp N4      &kp N5                         &kp N6       &kp N7         &kp N8        &kp N9                &kp N0                 &kp KP_PLUS
-&kp F1     &kp F2           &kp F3       &kp F4    &kp F5      &kp F6                         &kp LEFT     &kp DOWN       &kp UP_ARROW  &kp RIGHT             &trans                 &trans
-&kp F7     &kp F8           &kp F9       &kp F10   &kp F11     &kp F12      &trans    &trans  &kp KP_PLUS  &kp MINUS      &kp EQUAL     &kp LBKT              &kp RBKT               &trans
-                                         &trans    &trans      &trans       &trans    &trans  &trans       &trans         &trans
+&kp TILDE  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                  &kp CARET    &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS
+&kp GRAVE  &kp N1           &kp N2       &kp N3    &kp N4      &kp N5                       &kp N6       &kp N7         &kp N8        &kp N9                &kp N0                 &kp KP_PLUS
+&kp F1     &kp F2           &kp F3       &kp F4    &kp F5      &kp F6                       &kp LEFT     &kp DOWN       &kp UP_ARROW  &kp RIGHT             &trans                 &trans
+&kp F7     &kp F8           &kp F9       &kp F10   &kp F11     &kp F12      &to 5    &to 4  &kp KP_PLUS  &kp MINUS      &kp EQUAL     &kp LBKT              &kp RBKT               &trans
+                                         &trans    &trans      &trans       &to 0    &to 3  &trans       &trans         &trans
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         linux {
             bindings = <
-&kp ESCAPE        &workspace_change LG(NUMBER_1) NUMBER_1  &workspace_change LG(NUMBER_2) NUMBER_2  &workspace_change LG(N3) N3  &workspace_change LG(N4) N4  &workspace_change LG(N5) N5                                                             &workspace_change LG(N6) NUMBER_6  &workspace_change LG(N7) N7  &workspace_change LG(N8) NUMBER_8  &workspace_change LG(N9) NUMBER_9  &workspace_change LG(N0) NUMBER_0  &kp GRAVE
-&kp TAB           &kp Q                                    &kp W                                    &home_row HOME E             &kp R                        &kp T                                                                                   &kp Y                              &kp U                        &home_row END I                    &kp O                              &kp P                              &kp BACKSPACE
-&kp LEFT_SHIFT    &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                                                   &home_row LEFT_GUI H                    &home_row LEFT_ALT J                &home_row LEFT_SHIFT K                &home_row LEFT_CONTROL L               &kp SEMI                           &kp SQT
-&kp LEFT_CONTROL  &kp Z                                    &kp X                                    &kp C                        &kp V                        &kp B                        &kp LEFT_BRACKET                &kp RIGHT_BRACKET          &kp N                              &kp M                        &kp COMMA                          &kp DOT                            &kp FSLH                           &kp EQUAL
-                                                                                                    &kp PRINTSCREEN              &mo 1                        &mo 2                        &kp SPACE    &kp ENTER  &kp DELETE               &kp MINUS                    &kp BACKSLASH
+&kp ESCAPE        &workspace_change LG(NUMBER_1) NUMBER_1  &workspace_change LG(NUMBER_2) NUMBER_2  &workspace_change LG(N3) N3  &workspace_change LG(N4) N4  &workspace_change LG(N5) N5                                         &workspace_change LG(N6) NUMBER_6  &workspace_change LG(N7) N7  &workspace_change LG(N8) NUMBER_8  &workspace_change LG(N9) NUMBER_9  &workspace_change LG(N0) NUMBER_0  &kp GRAVE
+&kp TAB           &kp Q                                    &kp W                                    &home_row HOME E             &kp R                        &kp T                                                               &kp Y                              &kp U                        &home_row END I                    &kp O                              &kp P                              &kp BACKSPACE
+&kp LEFT_SHIFT    &home_row LEFT_GUI A                     &home_row LEFT_ALT S                     &home_row LEFT_SHIFT D       &home_row LEFT_CONTROL F     &kp G                                                               &home_row LEFT_GUI H               &home_row LEFT_ALT J         &home_row LEFT_SHIFT K             &home_row LEFT_CONTROL L           &kp SEMI                           &kp SQT
+&kp LEFT_CONTROL  &kp Z                                    &kp X                                    &kp C                        &kp V                        &kp B                        &kp LEFT_BRACKET    &kp RIGHT_BRACKET  &kp N                              &kp M                        &kp COMMA                          &kp DOT                            &kp FSLH                           &kp EQUAL
+                                                                                                    &kp PRINTSCREEN              &mo 1                        &mo 2                        &kp SPACE           &kp ENTER          &kp DELETE                         &kp MINUS                    &kp BACKSLASH
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         adjust_utility {
@@ -157,7 +161,6 @@
 &trans        &trans        &trans        &trans      &trans      &trans        &trans    &trans  &trans  &trans  &trans  &trans  &trans      &trans
                                           &trans      &trans      &trans        &trans    &trans  &trans  &trans  &trans
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         fortnite {
@@ -172,11 +175,11 @@
 
         nav_layer {
             bindings = <
-&trans &trans &trans &trans &trans &trans                       &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans                       &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans                      &kp HOME &kp PAGE_DOWN &kp PAGE_UP &kp END &trans &trans
-&trans &trans &trans &trans &trans &trans                      &trans &trans &trans &trans &trans &trans
-                                                                 &trans &trans &trans &trans &trans &trans &trans &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans    &trans         &trans       &trans   &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans    &trans         &trans       &trans   &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME  &kp PAGE_DOWN  &kp PAGE_UP  &kp END  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans         &trans       &trans   &trans  &trans
+                        &trans  &trans  &trans  &trans    &trans  &trans
             >;
         };
     };
