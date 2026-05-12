@@ -187,7 +187,7 @@
          */
         linux_ov {
             bindings = <
-                &workspace_change LG(NUMBER_1) NUMBER_1  &workspace_change LG(NUMBER_2) NUMBER_2  &workspace_change LG(N3) N3  &workspace_change LG(N4) N4  &workspace_change LG(N5) N5                                        &workspace_change LG(N6) NUMBER_6  &workspace_change LG(N7) N7  &workspace_change LG(NUMBER_8) NUMBER_8  &workspace_change LG(N9) NUMBER_9  &workspace_change LG(NUMBER_0) NUMBER_0  &trans
+                &workspace_change LG(NUMBER_1) NUMBER_1  &workspace_change LG(NUMBER_2) NUMBER_2  &workspace_change LG(NUMBER_3) NUMBER_3  &workspace_change LG(NUMBER_4) NUMBER_4  &workspace_change LG(NUMBER_5) NUMBER_5                                        &workspace_change LG(NUMBER_6) NUMBER_6  &workspace_change LG(NUMBER_7) NUMBER_7  &workspace_change LG(NUMBER_8) NUMBER_8  &workspace_change LG(NUMBER_9) NUMBER_9  &workspace_change LG(NUMBER_0) NUMBER_0  &trans
                 &trans         &trans      &trans      &trans      &trans      &trans                              &trans      &trans      &trans      &trans      &trans      &trans
                 &trans         &trans      &trans      &trans      &trans      &trans                              &trans      &trans      &trans      &trans      &trans      &trans
                 &trans         &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
