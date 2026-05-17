@@ -25,7 +25,7 @@
         // Toggle Fortnite Layer (S symmetric across hands)
 
         to_fortnite {
-            bindings = <&tog 0>;
+            bindings = <&to 5>;
             key-positions = <55 4>;
             layers = <0 1 2 3>;
             require-prior-idle-ms = <150>;
