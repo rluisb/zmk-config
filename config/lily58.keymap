@@ -102,7 +102,7 @@
             bindings = <
 &kp ESCAPE        &hold_tap LA(NUMBER_1) NUMBER_1  &hold_tap LA(NUMBER_2) NUMBER_2  &hold_tap LA(NUMBER_3) NUMBER_3  &hold_tap LA(NUMBER_4) NUMBER_4  &hold_tap LA(NUMBER_5) N5                                                    &hold_tap LA(NUMBER_6) NUMBER_6  &hold_tap LA(NUMBER_7) N7  &hold_tap LA(NUMBER_8) N8  &hold_tap LA(NUMBER_9) N9  &hold_tap LA(NUMBER_0) N0  &kp GRAVE
 &kp TAB           &kp Q                            &kp W                            &home_row HOME E                 &kp R                            &kp T                                                                        &kp Y                            &kp U                      &home_row END I            &kp O                      &kp P                      &kp BACKSPACE
-&kp LEFT_SHIFT    &home_row LEFT_GUI A             &home_row LEFT_ALT S             &home_row LEFT_SHIFT D           &home_row LEFT_CONTROL F         &kp G                                                                        &home_row LEFT_GUI H             &home_row LEFT_ALT J       &home_row LEFT_SHIFT K     &home_row LEFT_CONTROL L   &kp SEMI                   &kp SQT
+&kp LEFT_SHIFT    &kp A                            &kp S                            &kp D                            &kp F                            &kp G                                                                        &kp H                            &kp J                      &kp K                      &kp L                      &kp SEMI                   &kp SQT
 &kp LEFT_CONTROL  &kp Z                            &kp X                            &kp C                            &kp V                            &kp B                        &kp LEFT_BRACKET             &kp RIGHT_BRACKET  &kp N                            &kp M                      &kp COMMA                  &kp DOT                    &kp FSLH                   &kp EQUAL
                                                                                     &kp LC(SPACE)                    &layer_hold_tap 1 LEFT_ALT       &layer_hold_tap 2 LEFT_META  &hold_tap SPACE LC(SPACE)    &kp ENTER          &layer_hold_tap 2 DELETE         &kp MINUS                  &kp BACKSLASH
             >;
@@ -150,11 +150,11 @@
 
         FORTNITE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &kp H   &trans  &kp M   &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                 &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &hold_tap LEFT_META M  &trans    &trans  &trans  &trans  &trans
             >;
         };
     };
