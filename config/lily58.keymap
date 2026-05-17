@@ -150,11 +150,11 @@
 
         FORTNITE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                 &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &hold_tap LEFT_META M  &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                 &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &hold_tap LEFT_META M  &kp SPACE    &trans  &trans  &trans  &trans
             >;
         };
     };
