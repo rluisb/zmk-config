@@ -49,7 +49,7 @@
     };
 
     behaviors {
-        // Symmetrical Home Row Mods
+        // MASC Home Row Mods (Meta, Alt, Shift, Ctrl)
 
         home_row: home_row {
             compatible = "zmk,behavior-hold-tap";
@@ -76,8 +76,40 @@
             tapping-term-ms = <300>;
             flavor = "tap-preferred";
             bindings = <&mo>, <&kp>;
-
             quick-tap-ms = <150>;
+        };
+
+        hold_tap_layer: hold_tap_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_LAYER";
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&to>;
+            quick-tap-ms = <150>;
+        };
+
+        td_clipboard: td_clipboard {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_CLIPBOARD";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LG(C)>, <&kp LG(V)>, <&kp LS(LG(C))>;
+        };
+
+        mac_delete_all: mac_delete_all {
+            compatible = "zmk,behavior-macro";
+            label = "MAC_DELETE_ALL";
+            #binding-cells = <0>;
+            bindings = <&kp LG(A) &kp BSPC>;
+        };
+
+        td_bspc: td_bspc {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_BSPC";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp BSPC>, <&kp LA(BSPC)>, <&kp LG(BSPC)>, <&mac_delete_all>;
         };
     };
 
@@ -101,10 +133,10 @@
         base {
             bindings = <
 &kp ESCAPE        &hold_tap LA(NUMBER_1) NUMBER_1  &hold_tap LA(NUMBER_2) NUMBER_2  &hold_tap LA(NUMBER_3) NUMBER_3  &hold_tap LA(NUMBER_4) NUMBER_4  &hold_tap LA(NUMBER_5) N5                                                  &hold_tap LA(NUMBER_6) NUMBER_6  &hold_tap LA(NUMBER_7) N7  &hold_tap LA(NUMBER_8) N8  &hold_tap LA(NUMBER_9) N9  &hold_tap LA(NUMBER_0) N0  &kp GRAVE
-&kp TAB           &kp Q                            &kp W                            &home_row HOME E                 &kp R                            &kp T                                                                      &kp Y                            &kp U                      &home_row END I            &kp O                      &kp P                      &kp BACKSPACE
-&kp LEFT_SHIFT    &kp A                            &kp S                            &kp D                            &kp F                            &kp G                                                                      &kp H                            &kp J                      &kp K                      &kp L                      &kp SEMI                   &kp SQT
+&kp TAB           &kp Q                            &kp W                            &home_row HOME E                 &kp R                            &kp T                                                                      &kp Y                            &kp U                      &home_row END I            &kp O                      &kp P                      &td_bspc
+&kp LEFT_SHIFT    &home_row LGUI A                 &home_row LALT S                 &home_row LSFT D                 &home_row LCTL F                 &kp G                                                                      &kp H                            &home_row RCTL J           &home_row RSFT K           &home_row RALT L           &home_row RGUI SEMI        &kp SQT
 &kp LEFT_CONTROL  &kp Z                            &kp X                            &kp C                            &kp V                            &kp B                      &kp LEFT_BRACKET             &kp RIGHT_BRACKET  &kp N                            &kp M                      &kp COMMA                  &kp DOT                    &kp FSLH                   &kp EQUAL
-                                                                                    &kp LC(SPACE)                    &kp LEFT_ALT                     &kp LEFT_META              &hold_tap LC(SPACE) SPACE    &kp ENTER          &kp DELETE                       &kp MINUS                  &kp BACKSLASH
+                                                                                    &td_clipboard                    &kp LEFT_ALT                     &kp LEFT_META              &hold_tap LC(SPACE) SPACE    &kp ENTER          &layer_hold_tap 2 DELETE          &kp MINUS                  &kp BACKSLASH
             >;
         };
 
