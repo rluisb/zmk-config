@@ -43,7 +43,7 @@
 
         to_adjust {
             bindings = <&to 3>;
-            key-positions = <55 3>;
+            key-positions = <3 55>;
             layers = <0 1 2 3>;
         };
     };
@@ -100,11 +100,11 @@
 
         base {
             bindings = <
-&kp ESCAPE        &hold_tap LA(NUMBER_1) NUMBER_1  &hold_tap LA(NUMBER_2) NUMBER_2  &hold_tap LA(NUMBER_3) NUMBER_3  &hold_tap LA(NUMBER_4) NUMBER_4  &hold_tap LA(NUMBER_5) N5                                                    &hold_tap LA(NUMBER_6) NUMBER_6  &hold_tap LA(NUMBER_7) N7  &hold_tap LA(NUMBER_8) N8  &hold_tap LA(NUMBER_9) N9  &hold_tap LA(NUMBER_0) N0  &kp GRAVE
-&kp TAB           &kp Q                            &kp W                            &home_row HOME E                 &kp R                            &kp T                                                                        &kp Y                            &kp U                      &home_row END I            &kp O                      &kp P                      &kp BACKSPACE
-&kp LEFT_SHIFT    &kp A                            &kp S                            &kp D                            &kp F                            &kp G                                                                        &kp H                            &kp J                      &kp K                      &kp L                      &kp SEMI                   &kp SQT
-&kp LEFT_CONTROL  &kp Z                            &kp X                            &kp C                            &kp V                            &kp B                        &kp LEFT_BRACKET             &kp RIGHT_BRACKET  &kp N                            &kp M                      &kp COMMA                  &kp DOT                    &kp FSLH                   &kp EQUAL
-                                                                                    &kp LC(SPACE)                    &layer_hold_tap 1 LEFT_ALT       &layer_hold_tap 2 LEFT_META  &hold_tap SPACE LC(SPACE)    &kp ENTER          &layer_hold_tap 2 DELETE         &kp MINUS                  &kp BACKSLASH
+&kp ESCAPE        &hold_tap LA(NUMBER_1) NUMBER_1  &hold_tap LA(NUMBER_2) NUMBER_2  &hold_tap LA(NUMBER_3) NUMBER_3  &hold_tap LA(NUMBER_4) NUMBER_4  &hold_tap LA(NUMBER_5) N5                                                  &hold_tap LA(NUMBER_6) NUMBER_6  &hold_tap LA(NUMBER_7) N7  &hold_tap LA(NUMBER_8) N8  &hold_tap LA(NUMBER_9) N9  &hold_tap LA(NUMBER_0) N0  &kp GRAVE
+&kp TAB           &kp Q                            &kp W                            &home_row HOME E                 &kp R                            &kp T                                                                      &kp Y                            &kp U                      &home_row END I            &kp O                      &kp P                      &kp BACKSPACE
+&kp LEFT_SHIFT    &kp A                            &kp S                            &kp D                            &kp F                            &kp G                                                                      &kp H                            &kp J                      &kp K                      &kp L                      &kp SEMI                   &kp SQT
+&kp LEFT_CONTROL  &kp Z                            &kp X                            &kp C                            &kp V                            &kp B                      &kp LEFT_BRACKET             &kp RIGHT_BRACKET  &kp N                            &kp M                      &kp COMMA                  &kp DOT                    &kp FSLH                   &kp EQUAL
+                                                                                    &kp LC(SPACE)                    &kp LEFT_ALT                     &kp LEFT_META              &hold_tap LC(SPACE) SPACE    &kp ENTER          &kp DELETE                       &kp MINUS                  &kp BACKSLASH
             >;
         };
 
