@@ -111,11 +111,7 @@
             label = "TD_BSPC";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings =
-                <&kp BSPC>,
-                <&kp LA(BSPC)>,
-                <&kp LG(BSPC)>,
-                <&mac_delete_all>;
+            bindings = <&kp BSPC>;
         };
     };
 
